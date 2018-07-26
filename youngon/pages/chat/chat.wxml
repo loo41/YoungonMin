@@ -1,0 +1,40 @@
+<view class="chat-box">
+  <view class="display-user" wx:if="{{notArise}}">
+    <view>
+      <image src="{{disUser.avatarUrl}}" style="height: 100rpx; width: 100rpx; border-radius: 50%;"/>
+    </view>
+    <view>{{disUser.nickName}}加入房间</view>
+  </view>
+  <view class="chat-header">
+    <image src="../../static/image/chat.png" style="height: 80rpx; width: 80rpx;"/>
+    {{people}} 人在线
+  </view>
+  <view class="chat-body">
+    <scroll-view scroll-y="true" bindscrolltoupper="_loadingMore" style="height: 100%;" scroll-with-animation="true" scroll-top="{{scrollTop}}">
+    <view wx:for="{{chatList}}" wx:for-index="idx" wx:key="*this" class="message-box">
+      <view class="message-header">
+        <image src="{{item.user.avatarUrl? item.user.avatarUrl: item.avatarUrl}}" style="height: 100rpx; width: 100rpx; border-radius: 50%;"/>
+      </view>
+      <view class="message-mes">
+        <view>{{item.message}}</view>
+      </view>
+    </view>
+    </scroll-view>
+  </view>
+  <view class="chat-bottom">
+    <view class="chat-bottom-child">
+      <view>
+        <input 
+          type="text" 
+          bindinput="_getValue" 
+          value="{{message}}" 
+          placeholder="Message"  
+          placeholder-class="notice-hold"
+          class="notice-input"/>
+        </view>
+      <view bindtap="sedMeassage">
+        发送
+      </view>
+    </view>
+  </view>
+</view>

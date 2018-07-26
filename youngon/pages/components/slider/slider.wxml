@@ -1,0 +1,39 @@
+<view class="youngon">
+  <view class="youngon-person">站员介绍</view>
+  <view class="youngon-soso">
+    <view class="youngon-soso_left">
+      <input 
+        type="text" 
+        placeholder="Search..." 
+        bindinput="_getValue"
+        focus="{{focus}}"
+        bindblur="_before"
+        bindconfirm="_soInfo"
+        class="youngon-input" 
+        placeholder-class="placeholder"/>
+    </view>
+    <view class="youngon-soso_right">
+      <view class="youngon-soso_logo" bindtap="_soso" ><text class="iconfont icon-sousuo soso-size" /></view>
+    </view>
+  </view>
+  <view class="youngon-persons">
+    <scroll-view scroll-y style="height: 100%; width: 100%" bindscrolltolower="_loadingMore">
+      <view wx:for="{{list}}" wx:for-index="idx" wx:key="*this">
+        <view class="youngon-persons_list" bindtap="_navigationInfo" id="{{idx}}" hover-class="gb-change">
+          <view>
+            <Text class="youngon-list_headerImg">
+              <image src="{{item.headerImg}}" style="height: 100%; width: 100%"/>
+            </Text>
+          </view>
+          <view class="youngon-list_name">{{item.username}}</view>
+        </view>
+      </view>
+      <view class="youngon-more" wx:if="{{noMore}}">
+        <view class="youngon-more_logo">
+          <text class="iconfont icon-gonggao"/>
+        </view>
+        <view class="youngon-more_title">没有更多了...</view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

@@ -1,0 +1,146 @@
+<!--index.wxml-->
+<view class="container-box">
+  <view scroll-y class="container-box" >
+    <view wx:if="{{swiperObject.notice.status}}" style="height: 60rpx" class="marquee_box">
+      <div class="marquee_text">
+        <text class="iconfont icon-gonggao"/>{{swiperObject.notice.content}}
+      </div>
+      <div class="close_marquee" bindtap="_closeMarquee">
+        <text class="iconfont icon-guanbix"></text>
+      </div>
+    </view>
+    <view class="container" wx:if="{{swiperObject.imgUrls.length > 0}}">
+      <swiper 
+        indicator-dots="{{swiperObject.indicatorDots}}"
+        indicator-color="{{swiperObject.indicatorColor}}"
+        indicator-active-color="{{swiperObject.indicatorActiveColor}}"
+        autoplay="{{swiperObject.autoplay}}"
+        current="{{swiperObject.current}}"
+        interval="{{swiperObject.interval}}"
+        duration="{{swiperObject.duration}}"
+        circular="{{swiperObject.circular}}"
+        vertical="{{swiperObject.vertical}}"
+        previous-margin="{{swiperObject.previousMargin}}"
+        next-margin="{{swiperObject.nextMargin}}"
+        display-multiple-items="{{swiperObject.displayMultipleItems}}"
+      >
+      <block wx:for="{{swiperObject.imgUrls}}" wx:for-index="idx" wx:key="*this">
+        <swiper-item bindtap="_openOther">
+          <image src="{{item.url}}" id="{{idx}}" class="slide-image" />
+        </swiper-item>
+      </block>
+      </swiper>
+    </view>
+    <view class="container" wx:if="{{swiperObject.imgUrls.length === 0}}">
+      <image src="http://wy.tianchenyong.top/backgroundIndex-youngon.jpg" id="{{idx}}" class="slide-image" />
+    </view>
+      
+    <view class="moduleContainer">
+      <view>
+        <view bindtap="_openSlider">
+          <view class="header-Img">
+            <div class="header-Img-box ds-ce">
+              <image src="../../static/image/logo.png" style="height: 80%; width: 80%"/>
+            </div>
+          </view>
+          <text>站员介绍</text>
+        </view>
+        <view bindtap="_signed">
+          <view class="header-Img">
+            <text class="header-Img-box hIB2"></text>
+          </view>
+          <text>站员签到</text>
+        </view>
+      </view>
+      <view>
+        <view bindtap="_gzAricle">
+          <view class="header-Img">
+            <div class="header-Img-box ds-ce">
+              <image src="../../static/image/gz.png" style="height: 70%; width: 70%"/>
+            </div>
+          </view>
+          <text>网站推文</text>
+        </view>
+        <view bindtap="_chat">
+          <view class="header-Img">
+            <text class="header-Img-box hIB5"></text>
+          </view>
+          <text>在线畅聊</text>
+        </view>
+      </view>
+      <view>
+        <view bindtap="_notice">
+          <view class="header-Img">
+            <text class="header-Img-box hIB3"></text>
+          </view>
+          <text>通知公告</text>
+        </view>
+        <view bindtap="_aboutUs">
+          <view class="header-Img">
+            <text class="header-Img-box hIB4"></text>
+          </view>
+          <text>关于我们</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 网站动态 -->
+    <view>
+        <view class="youngon-active">
+          <view class="youngon-active_line"></view>
+          <view class="youngon-active_title">网站动态</view>
+          <view class="youngon-active_line"></view>
+        </view>
+        <view class="youngonTrends" wx-if="{{youngonTrends.length > 0}}">
+          <view wx:for="{{youngonTrends}}" wx:for-index="idx" wx:key="*this" bindtap="_navTrendsCon"  hover-class="gb-change" class="youngonTrends-item" id="{{item._id}}&&{{item.title}}">
+            <view class="youngonTrends-picture">
+              <image src="{{item.picture}}" style="height: 100%; width: 100%;"/>
+            </view>
+            <view class="youngonTrends-title">
+              <text>{{item.title}}</text>
+              <text class="title">作者: {{item.author}}</text>
+            </view>
+          </view>
+        </view>
+        <view wx:if="{{trends.isBottom}}" class="youngonTrends-bottom">已经到底了...</view>
+    </view>
+
+    <!-- 测导航栏目 -->
+    <view class="sidebar-box">
+      <view class="curtain" animation="{{animationDataBox}}" bindtap="_closeSlider"></view>
+      <view class="sidebar" animation="{{animationData}}">
+        <slider class="slider"/>
+      </view>
+    </view>
+
+    <!-- 客服小组件 -->
+    <view class="customerService">
+      <view class="flex-center">
+        <button open-type='share'
+          hover-class="gb-change"
+          class="share share-1">
+        </button>
+      </view>
+      <view class="flex-center">
+        <button open-type='getUserInfo'
+          hover-class="gb-change"
+          bindgetuserinfo="bindGetUserInfo"
+          class="share share-2">
+        </button>
+      </view>
+      <view class="flex-center">
+        <button open-type='contact'
+          hover-class="gb-change" 
+          class="share share-3">
+        </button>
+      </view>
+      <view class="flex-center">
+        <button open-type='openSetting'
+          hover-class="gb-change"
+          class="share share-4">
+        </button>
+      </view>
+    </view>
+  </view>
+  <msg class="msg" wx:if="{{close}}"></msg>
+</view>

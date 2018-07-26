@@ -1,0 +1,175 @@
+@import './static/wxss/weui.wxss';
+
+/**app.wxss**/
+page {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #EFEFF4;
+}
+swiper {
+  width: 100%;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.container-box {
+  height: 100%;
+  width: 100%;
+}
+.container {
+  height: 300rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.ds-ce {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ds-le {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.ds-ed {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.ds-c-ce {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.ds-c-le {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.ds-c-en {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+
+
+
+
+
+@font-face {
+  font-family: 'iconfont';  /* project id 711413 */
+  src: url('//at.alicdn.com/t/font_711413_yaszbi159ic.eot');
+  src: url('//at.alicdn.com/t/font_711413_yaszbi159ic.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_711413_yaszbi159ic.woff') format('woff'),
+  url('//at.alicdn.com/t/font_711413_yaszbi159ic.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_711413_yaszbi159ic.svg#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-gengxin:before { content: "\e60b"; }
+
+.icon-brand:before { content: "\e607"; }
+
+.icon-qihuabu:before { content: "\e81c"; }
+
+.icon-guanyuwomenicon:before { content: "\e640"; }
+
+.icon-bumen:before { content: "\e60c"; }
+
+.icon-share:before { content: "\e60f"; }
+
+.icon-fenxiang:before { content: "\e611"; }
+
+.icon-qunfengtongzhigonggao:before { content: "\e7b1"; }
+
+.icon-a526:before { content: "\e655"; }
+
+.icon-xingzhuang91zhuanhuan01:before { content: "\e637"; }
+
+.icon-iconzhenghe19:before { content: "\e721"; }
+
+.icon-sousuo1:before { content: "\e623"; }
+
+.icon-denglu:before { content: "\e606"; }
+
+.icon-qiandao1:before { content: "\e608"; }
+
+.icon-qiandao:before { content: "\e617"; }
+
+.icon-dongtai:before { content: "\e64f"; }
+
+.icon-rongyu:before { content: "\e633"; }
+
+.icon-gonggao:before { content: "\e6f2"; }
+
+.icon-gonggao1:before { content: "\e61b"; }
+
+.icon-shanchu:before { content: "\e609"; }
+
+.icon-zhiwei:before { content: "\e654"; }
+
+.icon-gerenxinxi:before { content: "\e641"; }
+
+.icon-daohang1:before { content: "\e600"; }
+
+.icon-arrow-down:before { content: "\e604"; }
+
+.icon-liaotian:before { content: "\e624"; }
+
+.icon-daxuesheng:before { content: "\e642"; }
+
+.icon-plus:before { content: "\e605"; }
+
+.icon-key:before { content: "\e60a"; }
+
+.icon-ziyuan:before { content: "\e62a"; }
+
+.icon-yunying:before { content: "\e602"; }
+
+.icon-add:before { content: "\e601"; }
+
+.icon-guanyuwomen:before { content: "\e615"; }
+
+.icon-kaixin:before { content: "\e6bc"; }
+
+.icon-zhuangtai:before { content: "\e62d"; }
+
+.icon-banbenxinxi:before { content: "\e6d3"; }
+
+.icon-good:before { content: "\e75a"; }
+
+.icon-sousuo:before { content: "\e63c"; }
+
+.icon-dianhua:before { content: "\e6bb"; }
+
+.icon-guanbix:before { content: "\e612"; }
+
+.icon-Shape:before { content: "\e603"; }
+
+.icon-kaifa:before { content: "\e8b0"; }
+
+.icon-guanbi:before { content: "\e66b"; }
+
+.icon-renyuan:before { content: "\e61c"; }
+
+.icon-icon-plus:before { content: "\e85a"; }
+
+.icon-touxiang:before { content: "\e620"; }
+

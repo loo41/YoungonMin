@@ -1,0 +1,5 @@
+<view class="msg-box">
+  <view style="height: {{height}}rpx; width: {{width}}rpx;" class="msg">
+    {{msg}}
+  </view>
+</view>

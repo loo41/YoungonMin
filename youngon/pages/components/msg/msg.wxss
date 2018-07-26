@@ -1,0 +1,18 @@
+.msg-box {
+  height: 100%;
+  width: 100%;display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.msg {
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32rpx;
+  color: white;
+  border-radius: 20rpx;
+  box-sizing: border-box;
+  padding: 10rpx; 
+  position: fixed;
+}

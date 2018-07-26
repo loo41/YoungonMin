@@ -1,0 +1,59 @@
+<scroll-view scroll-y="true" class="user">
+  <view class="ds-ce" wx:if="{{user._id}}" style="height: {{userBox.height}}px; width: {{userBox.width}}px;" animation="{{animationData}}">
+    <view class="header-bg" style="background-image: url({{user.headerImg}})" animation="{{animationData}}" ></view>
+    <view class="header-img_box ds-c-ce" bindtap="_animation" animation="{{animationDataBox}}">
+      <view class="img-box"><image src="{{user.headerImg}}" class="img" /></view>
+      <view>{{user.username}}</view>
+    </view>
+  </view>
+  <view class="user-info-box" wx-if="{{arise}}" style="min-height: {{userBox.H}}px">
+    <view class="user-info_motto">{{user.motto}}</view>
+    <view class="user-info_smallBox ds-le" bindtap="_call" id="{{user.phone}}">
+      <view class="icon ds-ce"><text class="iconfont icon-dianhua body_view_icon"/></view>
+      <view class="user-info_title">{{user.phone}}</view>
+    </view>
+    <view class="user-info_smallBox ds-le">
+      <view class="icon ds-ce"><text class="iconfont icon-brand body_view_icon"/></view>
+      <view class="user-info_title">{{user.email}}</view>
+    </view>
+    <view class="user-info_smallBox ds-le">
+      <view class="icon ds-ce"><text class="iconfont icon-daxuesheng body_view_icon"/></view>
+      <view class="user-info_title" wx-if="{{user.grade===1}}">大一</view>
+      <view class="user-info_title" wx:elif="{{user.grade===2}}">大二</view>
+      <view class="user-info_title" wx:elif="{{user.grade===3}}">大三</view>
+      <view class="user-info_title" wx:elif="{{user.grade===4}}">大三</view>
+      <view class="user-info_title" wx:elif="{{user.grade===5}}">毕业</view>
+    </view>
+    <view class="user-info_smallBox ds-le">
+      <view class="icon ds-ce"><text class="iconfont icon-zhiwei body_view_icon"/></view>
+      <view class="user-info_title" wx-if="{{user.post===1}}">站长</view>
+      <view class="user-info_title" wx:elif="{{user.post===2}}">部长</view>
+      <view class="user-info_title" wx:elif="{{user.post===3}}">正式站员</view>
+      <view class="user-info_title" wx:elif="{{user.post===4}}">实习站员</view>
+      <view class="user-info_title" wx:elif="{{user.post===5}}">副站</view>
+    </view>
+    <view class="user-info_smallBox ds-le">
+      <view class="icon ds-ce"><text class="iconfont icon-bumen body_view_icon"/></view>
+      <view class="user-info_title" wx-if="{{user.department===1}}">开发部</view>
+      <view class="user-info_title" wx:elif="{{user.department===2}}">企划部</view>
+      <view class="user-info_title" wx:elif="{{user.department===3}}">运营部</view>
+      <view class="user-info_title" wx:elif="{{user.department===3}}">信息部</view>
+    </view>
+    <view class="user-info_smallBox ds-le">
+      <view class="icon ds-ce"><text class="iconfont icon-zhuangtai body_view_icon"/></view>
+      <view class="user-info_title">{{user.state===1? '在站': '不在站'}}</view>
+    </view>
+  </view>
+  
+  <view class="function ds-ce" animation="{{ariseanimationData}}">
+    <view class="function-box ds-ce" wx:if="{{isArise}}" bindtap="_call" id="{{user.phone}}">
+      <text class="iconfont icon-dianhua body_view_icon"/>
+    </view>
+    <view class="function-box ds-ce" wx:if="{{isArise}}" bindtap="_keepUser">
+      <text class="iconfont icon-add body_view_icon"/>
+    </view>
+    <view class="function-box ds-ce" bindtap="_ariseAnimation">
+      <text class="iconfont icon-icon-plus body_view_icon"/>
+    </view>
+  </view>
+</scroll-view>

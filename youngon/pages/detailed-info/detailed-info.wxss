@@ -1,0 +1,78 @@
+.user {
+  height: 100%;
+  width: 100%
+}
+.header-bg {
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */
+  -webkit-filter: blur(3px); /* Chrome, Opera */
+  -moz-filter: blur(3px);
+  -ms-filter: blur(3px);    
+  filter: blur(3px);
+  position: absolute;
+  top: 0;
+  z-index: -2;
+}
+.header-img_box {
+  height: 250rpx;
+  width: 250rpx;
+}
+.img-box {
+  height: 150rpx;
+  width: 150rpx;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+.img {
+  height: 100%;
+  width: 100%
+}
+.header-title {
+  box-sizing: border-box;
+  padding: 10rpx;
+  height: 40rpx;
+  font-size: 36rpx;
+}
+.user-info-box {
+  box-sizing: border-box;
+  padding: 40rpx;
+  padding-top: 60rpx;
+  background: white;
+}
+.user-info_motto {
+  font-size: 28rpx;
+  text-align: center;
+  line-height: 50rpx;
+  height: 70rpx;
+}
+.user-info_smallBox {
+  height: 70rpx;
+}
+.icon {
+  height: 70rpx;
+  width: 70rpx;
+}
+.user-info_title {
+  font-size: 32rpx;
+  box-sizing: border-box;
+  flex: 1;
+  padding-left: 20rpx;
+}
+
+.function {
+  position: absolute;
+  top: 0rpx;
+  right: 0rpx;
+  width: 100rpx;
+  overflow: hidden;
+  height: 100rpx;
+}
+.function-box {
+  height: 100rpx;
+  width: 100rpx;
+  box-sizing: 10rpx;
+}

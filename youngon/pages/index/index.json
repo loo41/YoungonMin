@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "阳光网站",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "slider": "/pages/components/slider/slider",
+        "msg": "/pages/components/msg/msg"
+    }
+}

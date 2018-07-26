@@ -1,0 +1,40 @@
+<view class="notice-box">
+  <view class="notice-search ds-ce">
+    <view class="notice-search-box ds-ce">
+      <view class="notice-soso_logo ds-ce" bindtap="_searchValue">
+        <text class="iconfont icon-sousuo1"/>
+      </view>
+      <view class="notice-soso_input">
+        <input 
+          type="text" 
+          bindinput="_getValue" 
+          value="{{inputs.value}}" 
+          placeholder="请输入搜索内容"  
+          placeholder-class="notice-hold"
+          bindblur="_before" 
+          class="notice-input"/>
+      </view>
+      <view class="notice-soso_back ds-ce" bindtap="_clearInput">
+        <text class="iconfont icon-shanchu"/>
+      </view>
+    </view>
+  </view>
+  <view class="notice-body">
+    <scroll-view scroll-y="true" style="height: 100%; width: 100%">
+      <view wx:for="{{list}}" wx:for-index="idx" wx:key="*this" bindtap="_NavContent" id="{{item._id}}&&{{item.title}}">
+        <view class="list-box ds-ce">
+          <view class="list-box_img">
+            <image src="{{item.picture}}" class="img"/>
+          </view>
+          <view class="list-box_box">
+            <title class="list-box_box_title">{{item.title}}</title>
+            <title class="list-box_box_author">
+              <text>作者: {{item.author}}</text>
+              <text>发布于: {{item.timer}}</text>
+            </title>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

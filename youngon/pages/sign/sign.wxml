@@ -1,0 +1,269 @@
+<!--导航条-->  
+<view class="navbar">  
+  <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>  
+</view>  
+  
+<!--首页-->  
+<view hidden="{{currentTab!==0}}"  class="index-box">  
+  <view class="joke-box">
+    <view class="add-joke">
+      <view class="add-joke_left">
+        <text class="iconfont icon-kaixin"/>
+        <text style="margin-left: 20rpx;">开心分享</text>
+      </view>
+      <view class="add-joke_right" bindtap="_openShare">
+        <text class="iconfont icon-plus"/>
+      </view>
+    </view>
+    <view class="joke-content" wx:if="{{signInfo.joke.length > 0}}">{{signInfo.joke[0].content}}</view>
+    <view class="joke-tiemr" wx:if="{{signInfo.joke.length > 0}}">
+      <text>作者: {{signInfo.joke[0].username}}</text>
+      <text>发布于: {{signInfo.joke[0].timer}}</text>
+    </view>
+  </view>
+  <view class="now-house">
+    <view class="now-house_title">
+      <text class="iconfont icon-iconzhenghe19"/>
+      <text style="margin-left: 20rpx;">当前在站</text>
+    </view>
+    <view class="now-house_person">
+      <view wx:for="{{signInfo.presence}}" wx:for-index="idx" id="{{item.id}}" bindtap="_Nav" wx:key="*this" hover-class="gb-change" class="now-house_person-box">
+        <view class="nPimg ds-ce">
+          <view class="img-box ds-ce">
+            <image src="{{item.user.headerImg}}" style="height: 100%; width: 100%;" />
+          </view>
+        </view>
+        <view class="nPtitle">
+           <text>{{item.user.username}}</text>
+           <text wx:if="{{item.type == 1}}">值班</text>
+           <text wx:elif="{{item.type == 2}}">例会</text>
+           <text wx:elif="{{item.type == 3}}">补值班</text>
+           <text wx:elif="{{item.type == 4}}">其他</text>
+        </view>
+        <view class="ds-ce nav-logo"><text class="iconfont icon-arrow-down"/></view>
+      </view>
+      <view style="height: 30rpx;"></view>
+    </view>
+  </view>
+   <view class="now-house">
+    <view class="now-house_title">
+      <text class="iconfont icon-key"/>
+      <text style="margin-left: 20rpx;">钥匙携带者</text>
+    </view>
+    <view class="now-house_person">
+      <view wx:for="{{signInfo.carrierKey}}" id="{{item._id}}" bindtap="_Nav" wx:for-index="idx" wx:key="*this" class="now-house_person-box">
+        <view class="nPimg ds-ce">
+          <view class="img-box ds-ce">
+            <image src="{{item.headerImg}}" style="height: 100%; width: 100%;"/>
+          </view>
+        </view>
+        <view class="nPtitle">{{item.username}}</view>
+        <view class="ds-ce nav-logo"><text class="iconfont icon-arrow-down"/></view>
+      </view>
+      <view style="height: 30rpx;"></view>
+    </view>
+  </view>
+  <view class="share-box ds-ce" wx:if="{{share}}" bindtap="_closeShare">
+    <view class="share" catchtap="_stop">
+       <textarea 
+        bindinput="_getShareValue"
+        value="{{shareValue}}"
+        placeholder="开心分享, 分享你的开心"
+        placeholder-class="share-happly" 
+        style="width: 100%; height: 60%"/>
+        <view class="share-but ds-ce">
+          <button type="default"
+          class="sign-application"
+          loading="{{loading}}" 
+          disabled="{{disabled}}" 
+          bindtap="_upShare"> 提交 </button>
+        </view>
+    </view>
+  </view>
+</view>  
+  
+<!--签到-->  
+<view hidden="{{currentTab!==1}}"  class="index-box">  
+  <view class="login-form">
+    <view class="login-logo">
+      <text class="iconfont icon-qiandao1"/>
+    </view>
+
+    <view class="login-box">
+      <text>当前经纬度:</text>
+      <text>{{locationinfo.latitude}} {{locationinfo.longitude}}</text>
+    </view>
+    <view class="login-box">
+      <text>当前WIFI:</text>
+      <text>{{locationinfo.SSID}}</text>
+    </view>
+
+    <view class="login-box" wx:if="{{signInfo.signState}}">
+      <text>钥匙携带者</text>
+      <view class="sign-out-type">
+        <radio-group bindchange="_checkSignOutChange" detail="{{signOutType}}">
+          <label class="checkbox" wx:for="{{signoutType}}" wx:for-index="idx"  wx:key="*this">
+            <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+          </label>
+        </radio-group>
+      </view>
+    </view>
+    <view class="login-box login-sign" wx:elif="{{!signInfo.signState}}">
+      <text class="sign-type">签到类型</text>
+      <view>
+        <radio-group bindchange="_checkboxChange" detail="{{type}}">
+          <label class="checkbox" wx:for="{{signType}}" wx:for-index="idx"  wx:key="*this">
+            <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+          </label>
+        </radio-group>
+      </view>
+    </view>
+    <view class="login-box_sign" wx:if="{{!signInfo.signState}}">
+      <button type="default"
+        class="login-but"
+        loading="{{loading}}" 
+        disabled="{{disabled}}" 
+        bindtap="_sign"> 签到 </button>
+    </view>
+    <view class="login-box_sign" wx:elif="{{signInfo.signState}}">
+      <button type="default"
+        class="sign-out"
+        loading="{{loading}}" 
+        disabled="{{disabled}}" 
+        bindtap="_signOut"> 签退 </button>
+    </view>
+  </view>
+  <view class="app">
+    <view>
+      <switch checked="{{checked}}" bindchange="_openApplicetion" color="#3aafec" />
+    </view>
+    <view class="app-box" wx:if="{{checked}}">
+      <view class="app-text">
+        <textarea 
+          bindinput="_getInputValue" 
+          placeholder="请输入请假原因"
+          value="{{application.value}}"
+          class="app-textarea"
+          placeholder-class="app-plaStyle"/>
+      </view>
+      <view class="app_time">
+        <picker mode="date" value="{{application.startTime}}" id="start" start="2018-07-02" class="picker-box" end="2019-07-02" bindchange="_bindChange">
+          <view class="picker" style="width: 300px; max-width: 300px">
+            <text>请假日期:</text>
+            <text>{{application.startTime}}</text>
+          </view>
+        </picker>
+      </view>
+      <view class="app_time">
+        <picker bindchange="_bindChange" value="{{application.startClass}}" id="startClass" range="{{lesson}}">
+          <view class="picker" style="width: 300px; max-width: 300px">
+            <text>请假课节:</text>
+            <text>{{lesson[application.startClass]}}</text>
+          </view>
+        </picker>
+      </view>
+      <view></view>
+      <view class="app_time">
+        <picker mode="date" value="{{application.endTime}}" start="2018-07-02" class="picker-box" end="2019-07-02" id="end" bindchange="_bindChange">
+          <view class="picker" style="width: 300px; max-width: 300px">
+            <text>补值班日期:</text>
+            <text>{{application.endTime}}</text>
+          </view>
+        </picker>
+      </view>
+      <view class="app_time">
+        <picker bindchange="_bindChange" id="endClass" value="{{application.endClass}}" range="{{lesson}}">
+          <view class="picker" style="width: 300px; max-width: 300px">
+            <text>补值班课节:</text>
+            <text>{{lesson[application.endClass]}}</text>
+          </view>
+        </picker>
+      </view>
+      <view class="sign-app_box ds-ce">
+        <button type="default"
+          class="sign-application"
+          loading="{{loadings}}" 
+          disabled="{{disableds}}" 
+          bindtap="_applicationUp"> 提出申请 </button>
+      </view>
+    </view>
+  </view>
+</view>  
+  
+<!--记录-->  
+<view hidden="{{currentTab!==2}}" class="index-box">  
+  <view class="sign-rank">
+    <view class="rank-logo">
+      <text class="iconfont icon-rongyu"/>
+      <text style="margin-left: 20rpx">荣誉榜</text>
+    </view>
+    <view class="rank-body">
+      <view wx:for="{{signInfo.Honor}}"wx:for-index="idx" wx:key="*this" class="ranking-box" id="{{item._id}}" bindtap="_Nav">
+        <view class="ranking-body">
+          <view class="ranking-body_top">
+            <view class="rBT-img">
+              <image src="{{item.headerImg}}" style="width: 100%; height: 100%; border-radius: 50%"/>
+            </view>
+            <view class="rBT-body">
+              <view class="rBT-body-top">
+                <text>姓名:</text>
+                <text>{{item.username}}</text>
+              </view>
+              <view class="rBT-body-bottom">
+                <text>签到:</text>
+                <text>{{item.SignCount}}次</text>
+              </view>
+            </view>
+          </view>
+          <view class="ranking-body_bottom">{{item.motto}}</view>
+        </view>
+        <view class="ranking-nav ds-ce">
+          <text class="iconfont icon-arrow-down"/>
+        </view>
+      </view>
+    </view>
+    <view class="rank-footer">
+      <view>
+        <text class="iconfont icon-xingzhuang91zhuanhuan01"/> 再接再厉
+      </view>
+      <view>more...</view>
+    </view>
+  </view>
+  <view class="sign-rank">
+    <view class="rank-logo">
+      <text class="iconfont icon-dongtai"/>
+      <text style="margin-left: 20rpx">忘签榜</text>
+    </view>
+    <view class="rank-body">
+      <view wx:for="{{signInfo.forgetSign}}"wx:for-index="idx" wx:key="*this" id="{{item._id}}" class="ranking-box" bindtap="_Nav">
+        <view class="ranking-body">
+          <view class="ranking-body_top">
+            <view class="rBT-img">
+              <image src="{{item.headerImg}}" style="width: 100%; height: 100%;  border-radius: 50%"/>
+            </view>
+            <view class="rBT-body">
+              <view class="rBT-body-top">
+                <text>姓名:</text>
+                <text>{{item.username}}</text>
+              </view>
+              <view class="rBT-body-bottom">
+                <text>签到:</text>
+                <text>{{item.forgetSignCount}}次</text>
+              </view>
+            </view>
+          </view>
+          <view class="ranking-body_bottom">{{item.motto}}</view>
+        </view>
+        <view class="ranking-nav ds-ce">
+          <text class="iconfont icon-arrow-down"/>
+        </view>
+      </view>
+    </view>
+    <view class="rank-footer">
+      <view>
+        <text class="iconfont icon-good"/> 记得签退哦
+      </view>
+      <view>more...</view>
+    </view>
+  </view>  
+</view>

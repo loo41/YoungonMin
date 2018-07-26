@@ -1,0 +1,37 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/detailed-info/detailed-info",
+    "pages/sign/sign",
+    "pages/trends/trends",
+    "pages/notice/notice",
+    "pages/chat/chat",
+    "pages/about-us/about-us",
+    "pages/webView/webView",
+    "pages/person/person",
+    "pages/info-change/info-change",
+    "pages/location/location",
+    "pages/gz-article/gz-article"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#3aafec",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+    "color": "#a9b7b7",  
+    "selectedColor": "#3aafec",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "Youngon",
+      "iconPath": "./static/image/home2.png",
+      "selectedIconPath": "./static/image/home.png"
+    }, {
+      "pagePath": "pages/person/person",
+      "text": "个人中心",
+      "iconPath": "./static/image/person2.png",
+      "selectedIconPath": "./static/image/person.png"
+    }]
+  }
+}

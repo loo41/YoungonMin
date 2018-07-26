@@ -1,0 +1,73 @@
+<view style="height: 100%">
+  <scroll-view scroll-x="y" style="height: 100%">
+  <view class="header">
+    <view class="header-img-box">
+      <view class="header-img">
+        <image src="{{userinfo.avatarUrl}}" class="img"/>
+      </view>
+      <text class="header-title">{{userinfo.nickName}}</text>
+    </view>
+    <view class="header-login-box">
+      <button open-type='getUserInfo'
+        wx:if="{{!userinfo.nickName && !userinfo.city}}" 
+        bindgetuserinfo="_getUserInfo"
+        size="mini"
+        class="login">
+        登陆
+      </button>
+      <view class="login-state" wx:elif="{{userinfo.nickName}}">
+        <text class="iconfont icon-a526 login-state_icon"/>
+        <text class="login-state_title">已登陆</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="body">
+    <view class="body_view" bindtap="_Nav" id="notice">
+      <view class="body_view_con">
+        <text class="iconfont icon-gonggao1 body_view_icon"/>
+        <text class="body_view_title">通知公告</text>
+      </view>
+      <view class="body_view_nav">
+        <text class="iconfont icon-daohang1 body_view_icon"/>
+      </view>
+    </view>
+    <view class="body_view" bindtap="_change">
+      <view class="body_view_con">
+        <text class="iconfont icon-gerenxinxi body_view_icon"/>
+        <text class="body_view_title">信息修改</text>
+      </view>
+      <view class="body_view_nav">
+        <text class="iconfont icon-daohang1 body_view_icon"/>
+      </view>
+    </view>
+    <view class="body_view" bindtap="_Nav" id="location">
+      <view class="body_view_con">
+        <text class="iconfont icon-dongtai body_view_icon"/>
+        <text class="body_view_title">位置信息</text>
+      </view>
+      <view class="body_view_nav">
+        <text class="iconfont icon-daohang1 body_view_icon"/>
+      </view>
+    </view>
+    <view class="body_view">
+      <view class="body_view_con" bindtap="_Nav" id="">
+        <text class="iconfont icon-banbenxinxi body_view_icon"/>
+        <text class="body_view_title">版本信息</text>
+      </view>
+      <view class="body_view_nav">
+        <text class="iconfont icon-daohang1 body_view_icon"/>
+      </view>
+    </view>
+    <view class="body_view" bindtap="_Nav" id="about-us">
+      <view class="body_view_con">
+        <text class="iconfont icon-guanyuwomen body_view_icon"/>
+        <text class="body_view_title">关于我们</text>
+      </view>
+      <view class="body_view_nav">
+        <text class="iconfont icon-daohang1 body_view_icon"/>
+      </view>
+    </view>
+  </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>申请</title>
+  <style>
+    html body {
+      height: 100%;
+      background: #eeeeee
+    }
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .main {
+      width: 50%;
+      margin: 0 auto;
+    }
+    .logo {
+      height: 100px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-end;
+      box-sizing: border-box;
+      padding: 20px;
+      letter-spacing: 3px;
+      color: white;
+    }
+    .img {
+      max-height: 100%;
+      box-sizing: border-box;
+      padding-right: 5px;
+    }
+    .title {
+      height: 100px;
+      box-sizing: border-box;
+      padding: 20px;
+      background-color: #3aafec;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 25px;
+      letter-spacing: 3px;
+      color: white;
+    }
+    .body {
+      height: 300px;
+      background: white;
+    }
+    .display-box {
+      height: 50px;
+      display: flex;
+      font-size: 18px;
+    }
+    .display-box div:nth-child(1) {
+      display: flex;
+      justify-content: flex-start;
+      width: 30%;
+      align-items: center;
+      box-sizing: border-box;
+      padding-left: 5%;
+    }
+    .display-box div:nth-child(2) {
+      display: flex;
+      flex: 1;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .footer {
+      background: #3aafec;
+      color: white;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <div class="logo">
+      <img src="./img/logo.png" class="img" /> 阳光网站
+    </div>
+    <div class="title">
+      站员申请表
+    </div>
+    <div class="body">
+      <div class="display-box">
+        <div>申请人:</div>
+        <div><%= username %> </div>
+      </div>
+      <div class="display-box">
+        <div>申请时间:</div>
+        <div><%=info.startTime%> 第<%= (info.startClass + 1)%>大节</div>
+      </div>
+      <div class="display-box">
+        <div>补值班时间:</div>
+        <div><%=info.endTime%> 第<%= (info.endClass + 1)%>大节</div>
+      </div>
+      <div class="display-box">
+        <div>申请原因:</div>
+        <div><%=info.value%></div>
+      </div>
+    </div>
+    <div class="footer">请管理员尽快回复</div>
+  </div>
+</body>
+</html>

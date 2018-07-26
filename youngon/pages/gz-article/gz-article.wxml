@@ -1,0 +1,45 @@
+<view  class="gz-box">
+  <view class="gz-header ds-ce">
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+      <view wx:if="{{type === 'news'}}" class="picker icon-box ds-ce">
+        <image src="../../static/image/tueiwen.png"  class="img-box" />
+      </view>
+      <view wx:if="{{type === 'image'}}"  class="picker icon-box ds-ce">
+        <image src="../../static/image/potho.png"  class="img-box" />
+      </view>
+      <view wx:if="{{type === 'video'}}"  class="picker icon-box ds-ce">
+        <image src="../../static/image/shiping.png"  class="img-box" />
+      </view>
+    </picker>
+  </view>
+  <view class="gz-body" style="height: {{box.height - 50}}px">
+    <view wx:if="{{type === 'news'}}" class="gz-sc-box">
+      <scroll-view scroll-y="true"  id="news" class="gz-sc-box">
+        <view wx:for="{{typeInfo.news.item}}" wx:for-index="idx" wx:key="*this" class="ds-ce">
+          <view class="con-box" id="{{item.content.news_item[0].url}}" bindtap="_show">
+            <view class="con-box-tit">{{item.content.news_item[0].title}}</view>
+            <view class="con-box-dig">{{item.content.news_item[0].digest}}</view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+
+    <view wx:if="{{type === 'image'}}" class="gz-sc-box">
+      <scroll-view scroll-y="true"  id="image" class="gz-sc-box">
+        <view wx:for="{{typeInfo.image.item}}" wx:for-index="idx" wx:key="*this" class="gz-box-img ds-ce">
+          <image src="{{item.url}}" style="height: 100%; width: 100%" mode ="widthFix"/>
+        </view>
+      </scroll-view>
+    </view>
+
+    <view wx:if="{{type === 'video'}}" class="gz-sc-box">
+      <scroll-view scroll-y="true" id="video" class="gz-sc-box">
+        <view wx:for="{{typeInfo.video.item}}" wx:for-index="idx" wx:key="*this" class="ds-ce">
+          <view class="con-box" id="{{item.url}}" bindtap="_show">
+            <view class="con-vid-tit">{{item.name}}</view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>

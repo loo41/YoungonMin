@@ -1,0 +1,22 @@
+.content-box {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+.content-title {
+  min-height: 70rpx;
+  height: 70rpx;
+  padding-bottom: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 34rpx;
+}
+.content {
+  flex: 1;
+  height: 100%;
+  width: 100%
+}

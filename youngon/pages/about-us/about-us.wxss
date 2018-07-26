@@ -1,0 +1,117 @@
+.ani-box {
+  height: 170rpx;
+  width: 170rpx;
+  position: absolute;
+  background: white;
+  z-index: 10;
+  border-radius: 50%; 
+}
+.ani-logo {
+  height: 150rpx;
+  width: 150rpx;
+  position: absolute;
+  z-index: 11;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4)
+}
+.ani-dp1 {
+  height: 50%;
+  width: 50%;
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
+  opacity: 0;
+  background: #F1F6FD;
+  overflow: hidden;
+}
+.ani-ch-dp{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 8;
+  transform: translateY(-100%);
+  box-sizing: border-box;
+  padding: 10rpx;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.dp-title {
+  height: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32rpx;
+}
+.dp-con {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  font-size: 28rpx;
+  box-sizing: border-box;
+  padding: 4rpx;
+  background: white;
+}
+.ani-dp2 {
+  height: 50%;
+  width: 50%;
+  position: absolute;
+  top: 0rpx;
+  right: 0rpx;
+  opacity: 0;
+  background: #8AD5F2;
+  overflow: hidden;
+}
+.ani-dp3 {
+  height: 50%;
+  width: 50%;
+  position: absolute;
+  bottom: 0rpx;
+  left: 0rpx;
+  background: #B9E8EE;
+  opacity: 0;
+  overflow: hidden;
+}
+.ani-dp4 {
+  height: 50%;
+  width: 50%;
+  position: absolute;
+  bottom: 0rpx;
+  right: 0rpx;
+  opacity: 0;
+  background: #E9EAFC;
+  overflow: hidden;
+}
+.ani-dev {
+  height: 100rpx;
+  width: 100rpx;
+  background: white;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3)
+}
+.ani-qhua {
+  height: 100rpx;
+  width: 100rpx;
+  background: white;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3)
+}
+.ani-yuny {
+  height: 100rpx;
+  width: 100rpx;
+  background: white;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3)
+}
+.ani-xingxi {
+  height: 100rpx;
+  width: 100rpx;
+  background: white;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3)
+}
+.dp-img {
+  height: 90%;
+  width: 90%;
+}

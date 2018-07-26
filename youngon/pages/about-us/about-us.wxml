@@ -1,0 +1,61 @@
+<view style="height: 100%; width: 100%;">
+  <view style="height: 100%; width: 100%;" class="ds-ce">
+    <view class="ani-box" animation="{{animationData}}" wx:if="{{!die}}"></view>
+    <view class="ani-logo ds-ce" bindtap="_ariseAnimation"
+      style="left:{{left}}px; top:{{top}}px;"
+      bindtouchmove="viewTouchMove"
+    ><image src="../../static/image/logo.png" style="height: 80%; width:80%"/></view>
+    <view class="ani-dp1 ds-ce" wx:if="{{die}}" animation="{{animationDpData}}">
+      <view class="ani-ch-dp" animation="{{childAiBo.childAiBo1}}">
+        <text class="dp-title">网络开发部</text>
+        <text class="dp-con">
+          开发部为网站技术的中坚力量，负责革新网站的技术，
+          提高网站的技术含量。精通JavaScript、Hbuider、Sublime等进行页面开发，
+          用Chrome developtools等工具进行代码调试。主要负责天商校园网以及“阳光网站”网页的管理和维护工作。
+        </text>
+      </view>
+      <view bindtap="_childAni" id="1" class="ani-dev ds-ce">
+        <image src="../../static/image/kaifa.png" class="dp-img"/>
+      </view>
+    </view>
+    <view class="ani-dp2 ds-ce" wx:if="{{die}}" animation="{{animationDpData}}">
+      <view class="ani-ch-dp ds-ce" animation="{{childAiBo.childAiBo2}}">
+        <text class="dp-title">资讯企划部</text>
+        <text class="dp-con">
+          企划部的主要职能是负责校园网各页面的设计，同时负责网站历次活动所需宣传品的设计，
+          熟练运用Photoshop、Adobe Illustrator等图像处理工具，
+          目前的作品主要有网页、海报、宣传单、易拉宝、展板、名片、书签、明信片等。
+        </text>
+      </view>
+      <view bindtap="_childAni" id="2" class="ani-qhua ds-ce">
+        <image src="../../static/image/qihua.png" class="dp-img"/>
+      </view>
+    </view>
+    <view class="ani-dp3 ds-ce" wx:if="{{die}}" animation="{{animationDpData}}">
+      <view class="ani-ch-dp" animation="{{childAiBo.childAiBo3}}">
+        <text class="dp-title">市场运营部</text>
+        <text class="dp-con">
+          运营部主要负责网站的综合运营，如：内容、活动、项目运营等。
+          具有较强的执行力和良好的表达能力，运用对数据的敏感、清晰的逻辑和天马行空的创意，通过与校内外社团的交流合作，
+          整合社团内外资源，有力推动着网站开展丰富多彩的活动，提高网站影响力。
+        </text>
+      </view>
+      <view bindtap="_childAni" id="3" class="ani-yuny ds-ce">
+        <image src="../../static/image/yunying.png" class="dp-img"/>
+      </view>
+    </view>
+    <view class="ani-dp4 ds-ce" wx:if="{{die}}" animation="{{animationDpData}}">
+      <view class="ani-ch-dp" animation="{{childAiBo.childAiBo4}}">
+        <text class="dp-title">媒体信息部</text>
+        <text class="dp-con">
+          信息部主要负责视频及PPT制作，聚集了一批优秀的制作人才，
+          熟练掌握Adobe After Effect、Adobe Premiere等视频制作软件，熟练掌握相机、摄像机的使用，能根据不同的需求高效的制作出清晰、
+          美观、创意的视频和PPT，为网站及合作伙伴带来意想不到的价值。
+        </text>
+      </view>
+      <view bindtap="_childAni" id="4" class="ani-xingxi ds-ce">
+        <image src="../../static/image/xinxi.png" class="dp-img"/>
+      </view>
+    </view>
+  </view>
+</view>

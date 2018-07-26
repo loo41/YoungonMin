@@ -1,0 +1,7 @@
+<view class="content-box">
+  <view class="content-title">{{title}}</view>
+  <import src="/wxParse/wxParse.wxml"/>
+  <view class="content">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" class="content"/>
+  </view>
+</view>
