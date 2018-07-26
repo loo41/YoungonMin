@@ -5,7 +5,7 @@ Page({
   data: {
     people: 0,
     disUser: {
-      nickName: 'awd',
+      nickName: '',
       avatarUrl: ''
     },
     message: '',

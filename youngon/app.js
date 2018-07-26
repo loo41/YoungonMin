@@ -7,7 +7,7 @@ App({
     _login(this) 
   },
   globalData: {
-    BASEURL: `http://wy.tianchenyong.top/Wclient`,
+    BASEURL: `https://wy.tianchenyong.top/Wclient`,
     userinfo: {},
     isUni: 1,
     state: 1,
