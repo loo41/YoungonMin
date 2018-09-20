@@ -12,6 +12,7 @@ const Presence = require('./presence');
 const Apply = require('./apply');
 const Joke = require('./joke');
 const Chat = require('./chat');
+const Leave = require('./leave');
 
 
 module.exports = {
@@ -28,5 +29,6 @@ module.exports = {
   Presence,
   Apply,
   Joke,
-  Chat
+  Chat,
+  Leave
 }

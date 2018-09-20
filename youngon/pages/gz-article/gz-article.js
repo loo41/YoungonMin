@@ -3,7 +3,6 @@ const {_setAjax} = require('../../utils/util')
 
 Page({
   data: {
-    array: ['news', 'image', 'video'],
     type: 'news',
     box: {},
     gzInfo: {
@@ -15,7 +14,9 @@ Page({
       news: {item: []},
       image: {item: []},
       video: {item: []}
-    }
+    },
+    listData: {type: ['news', 'image', 'video']},
+    openPicker: false,
   },
   onLoad: function(){
     this._getMaterial()
@@ -111,6 +112,25 @@ Page({
         this._getMaterial(gzInfo.video)
         break
     }
+  },
+  _sure (e) {
+    let data = e.detail
+    if (JSON.stringify(e.detail) === '[]') {
+      this.setData({openPicker: false})
+      return
+    }
+    let {type} = this.data
+    type = data[0]
+    this.setData({
+      openPicker: false,
+      type
+    })
+  },
+  _close (e) {
+    this.setData({openPicker: false})
+  },
+  _openPick () {
+    this.setData({openPicker: true})
   },
   _show (e) {
     const {id} = e.currentTarget

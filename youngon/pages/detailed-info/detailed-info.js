@@ -92,9 +92,9 @@ Page({
   _keepUser () {
     if (wx.canIUse(`addPhoneContact`)) {
       wx.addPhoneContact({
-        nickName: this.data.user.username,
-        mobilePhoneNumber: this.data.user.phone,
-        email: this.data.user.email,
+        nickName: this.data.user.username || '',
+        mobilePhoneNumber: this.data.user.phone || '占无',
+        email: this.data.user.email || 'youngonwork2018@163.com',
         url: 'http://youngon.cn'
       })
     } else {

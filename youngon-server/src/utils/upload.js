@@ -1,9 +1,10 @@
 const multer = require('koa-multer')
 const _delect = require('./delect')
+const path = require('path')
  
 const storage = multer.diskStorage({  
   destination: function (req, file, cb) {  
-    cb(null, '/usr/share/wx_youngon/static')  
+    cb(null, '/usr/share/wx_youngon/static')
   },   
   filename: async function (req, file, cb) {
     const {type} = req.body

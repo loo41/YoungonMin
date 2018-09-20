@@ -5,19 +5,7 @@ Component({
   properties: {
     list: {
       type: Array,
-      value: [{
-        username: '田陈永',
-        headimgurl: '',
-        _id: 'adwa'
-      },
-      {
-        username: '田陈永',
-        headimgurl: ''
-      },
-      {
-        username: '田陈永',
-        headimgurl: ''
-      }]
+      value: []
     }
   },
   data: {
@@ -54,7 +42,7 @@ Component({
       this.setData({value: e.detail.value})
     },
     _soso: function() {
-      this.setData({focus: true})
+      this._soInfo()
     },
     _soInfo: function() {
       const value = this.data.value
@@ -69,26 +57,23 @@ Component({
       }).catch((e) => {console.log(e)})
     },
     _loadingMore: function() {
-      let { isLoding, list } = this.data
-      if (list.length < 20) {
-        this.setData({
-          noMore: true
-        })
-        return
-      }
+      let { isLoding, list, noMore } = this.data
+      if (noMore) return
       if (isLoding) return; isLoding = true; this.setData({isLoding: isLoding});
       const {BASEURL} = app.globalData
       const options = {url: `${BASEURL}/youngon-person?page=${this.data.page}`}
       wx.showToast({title: '数据加载中',  icon: 'loading', duration: 10000})
       _setAjax(options).then((result) => {
         const {data} = result
+        if (data.length < 20) noMore = true
         const flagArray = this.data.list.concat(data)
         app.globalData.youngonPerson = flagArray
         isLoding = false
         this.setData({
           list: flagArray,
           page: this.data.page+1,
-          isLoding: isLoding
+          isLoding: isLoding,
+          noMore
         })
         setTimeout(() => wx.hideToast(), 500)
       }).catch(() => {

@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "阳光网站公众号文章"
+  "navigationBarTitleText": "阳光网站公众号文章",
+  "usingComponents": {
+    "picker": "/pages/components/picker/picker"
+  }
 }

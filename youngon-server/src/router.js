@@ -31,6 +31,7 @@ router
 
 router
       .get(`/Wadmin/youngon_list`, a_User.list)
+      .get(`/Wadmin/youngon_list_all`, a_User.listAll)
       .get(`/Wadmin/is_youngon`, a_User.isYoungon)
       .post(`/Wadmin/add_youngon`, a_User.add)
       .get(`/Wadmin/delect_youngon`, a_User.delect)
@@ -45,6 +46,12 @@ router
       .get(`/Wadmin/delect-info`, a_Ntcted.delect)
       .get(`/Wadmin/get-list`, a_Ntcted.list)
       .post(`/Wadmin/upload-set`, upload.single('set'), a_Ntcted.upload)
+      .get(`/Wadmin/user-record-list`, a_User.handleCheckIn)
+      .get(`/Wadmin/joke-list`, a_User.jokeList)
+      .get(`/Wadmin/delect-joke`, a_User.delJoke)
+      .get(`/Wadmin/leave_list`, c_Chat.leaveAdminList)
+      .get(`/Wadmin/delect_leave`, c_Chat.delectLeave)
+      .get(`/Wadmin/change_careful`, c_Chat.changeCareful)
 
 
 /**
@@ -60,6 +67,7 @@ router
       .get(`/Wclient/youngon-person`, c_Client.youngonPerson)
       .get(`/Wclient/swiperInfo`, c_Client.createIndexData)
       .get(`/Wclient/search-youngon`, c_Client.search)
+      .get(`/Wclient/youngon-record`, c_Client.record)
 
 router
       .get(`/Wclient/trends`, c_Ntcted.trendsList)
@@ -83,6 +91,8 @@ router
       .post(`/Wclient/apply`, c_Sign.apply)
       .post (`/Wclient/add-share`, c_Sign.addJoke)
       .get(`/Wclient/more-chat`, c_Chat.more)
+      .post(`/Wclient/add-leave`, c_Chat.addLeave)
+      .get(`/Wclient/leave-list`, c_Chat.leaveList)
 
 
 

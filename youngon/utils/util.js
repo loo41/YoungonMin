@@ -43,9 +43,7 @@ const _login = (app) => {
     wx.login({
       success: function(res) { 
         options.data.code = res.code
-        console.log(res.code)
         _setAjax(options).then((result) => {
-          console.log(result.data)
           const {state, token, isUni, isYoungon} = result.data               // 定义三种状态, 状态一 未注册|(存在unicode || 不存在unicode)。 状态二 已注册,不是网站成员, 三是已注册，是网站成员。
           wx.setStorageSync('token', token)
           app.globalData.state = state
@@ -73,14 +71,18 @@ const _dealwithZorn = (app) => {
   const header = {"token": wx.getStorageSync('token')}
   userinfo.isUni = isUni
   if (isUni && isUni !== 1) {
-    _setAjax({url: `${BASEURL}/register`, data: userinfo, header, method: 'POST'}).then(()=>{}).catch(()=>{})
+    _setAjax({url: `${BASEURL}/register`, data: userinfo, header, method: 'POST'}).then(()=>{
+      _login(app)
+    }).catch(()=>{})
   } else {
     _checkSession().then(() => {
       wx.getUserInfo({
         success: function(res) {
           userinfo.iv = res.iv || ''
           userinfo.encryptedData = res.encryptedData || ''
-          _setAjax({url: `${BASEURL}/register`, data: userinfo, header, method: 'POST'}).then(()=>{}).catch(()=>{})
+          _setAjax({url: `${BASEURL}/register`, data: userinfo, header, method: 'POST'}).then(()=>{
+            _login(app)
+          }).catch(()=>{})
         }
       })
     }).catch(() => {

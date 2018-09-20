@@ -4,7 +4,7 @@
   display: flex;
 }
 .header-img-box {
-  width: 40%;
+  width: 80%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,6 +25,8 @@
 .header-title {
   font-size: 32rpx;
   color: white;
+  flex: 1;
+  margin-left: 20rpx;
 }
 .header-login-box {
   width: 60%;
@@ -94,6 +96,7 @@
   width: 30%;
   box-sizing: border-box;
   padding: 5%;
+  color: #E9EAEC;
 }
 .body_view_title {
   flex: 1;

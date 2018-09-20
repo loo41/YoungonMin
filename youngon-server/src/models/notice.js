@@ -5,7 +5,7 @@ const NoticeSchema = new Schema({
     title: {type: String, index: true},
     picture: String,
     author: String,
-    timer: {type: String, default: Date.now()}
+    timer: Number,
 })
 
 const Notice = moogose.model('notice', NoticeSchema)

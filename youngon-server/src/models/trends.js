@@ -5,7 +5,7 @@ const TrendSchema = new Schema({
     title: String,
     picture: String,
     author: String,
-    timer: {type: String, default: Date.now()}
+    timer: Number,
 })
 
 const Trends = moogose.model('trends', TrendSchema)

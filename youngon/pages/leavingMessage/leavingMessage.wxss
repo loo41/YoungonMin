@@ -1,0 +1,106 @@
+.leave-box {
+  padding: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+.add-leave {
+  height: 100rpx;
+  display: flex;
+  background: white;
+  padding: 20rpx;
+}
+.add-leave view:nth-child(1) {
+  width: 80%;
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  font-size: 28rpx;
+}
+.add-leave view:nth-child(2) {
+  flex: 1;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center
+}
+.leave-list-box {
+  margin-top: 40rpx;
+  background: white;
+}
+.leave-title {
+  height: 80rpx;
+  font-size: 28rpx;
+  padding: 20rpx;
+  display: flex;
+  align-items: center;
+}
+.leave-con {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20rpx;
+  box-sizing: border-box;
+  padding: 20rpx;
+}
+.leave-con view:nth-child(1){
+  min-height: 60rpx;
+  font-size: 32rpx;
+}
+.leave-con view:nth-child(2){
+  height: 50rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24rpx;
+  margin-top: 10rpx;
+}
+.leave-con view:nth-child(2) view:nth-child(1){
+  height: 50rpx;
+  display: flex;
+  align-items: center;
+  white-space: pre;
+  font-size: 24rpx;
+}
+.leave-con view:nth-child(2) view:nth-child(2){
+  height: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  white-space: pre;
+  font-size: 24rpx;
+}
+
+/*leave-box*/
+.share-box {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  background: rgba(0, 0, 0, 0.6);
+  left: 0;
+}
+.share {
+  height: 50%;
+  width: 80%;
+  background: white;
+  box-sizing: border-box;
+  padding: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.share-happly {
+  font-size: 24rpx;
+}
+.share-but {
+  display: flex;
+  flex: 1
+}
+.sign-application {
+  width: 100%;
+  height: 80rpx;
+  background: #3aafec!important;
+  color: white!important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

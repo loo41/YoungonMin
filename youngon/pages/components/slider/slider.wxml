@@ -29,9 +29,6 @@
         </view>
       </view>
       <view class="youngon-more" wx:if="{{noMore}}">
-        <view class="youngon-more_logo">
-          <text class="iconfont icon-gonggao"/>
-        </view>
         <view class="youngon-more_title">没有更多了...</view>
       </view>
     </scroll-view>

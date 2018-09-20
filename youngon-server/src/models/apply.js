@@ -7,6 +7,8 @@ const ApplySchema = new Schema({
     startClass: Number,                                        // 0第一大节 || 1第二大节
     endTime: String, 
     endClass: Number, 
+    secondEndTime: String,
+    secondEndClass: Number,
     value: String                                              // 原因
 })
 

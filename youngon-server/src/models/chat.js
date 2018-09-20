@@ -3,7 +3,7 @@ const Schema = moogose.Schema;
 
 const ChatSchema = new Schema({
     user: {type: Schema.Types.ObjectId, ref: 'userInfo'},              // youngonUser
-    timer: {type: String, default: Date.now()}, 
+    timer: Number,
     message: String
 })
 

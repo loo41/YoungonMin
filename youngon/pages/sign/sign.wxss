@@ -335,6 +335,8 @@ page{
   box-sizing: border-box;
   padding: 20rpx;
   border-radius: 50%;
+  height: 150rpx;
+  width: 150rpx;
 }
 .rBT-body {
   flex: 1;

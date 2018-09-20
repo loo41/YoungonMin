@@ -1,16 +1,20 @@
 <view  class="gz-box">
   <view class="gz-header ds-ce">
-    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-      <view wx:if="{{type === 'news'}}" class="picker icon-box ds-ce">
+      <picker
+        bind:sure="_sure" 
+        bind:close="_close" 
+        pickData="{{listData}}" 
+        open="{{openPicker}}"
+      />
+      <view wx:if="{{type === 'news'}}" class="picker icon-box ds-ce" bindtap="_openPick">
         <image src="../../static/image/tueiwen.png"  class="img-box" />
       </view>
-      <view wx:if="{{type === 'image'}}"  class="picker icon-box ds-ce">
+      <view wx:if="{{type === 'image'}}"  class="picker icon-box ds-ce" bindtap="_openPick">
         <image src="../../static/image/potho.png"  class="img-box" />
       </view>
-      <view wx:if="{{type === 'video'}}"  class="picker icon-box ds-ce">
+      <view wx:if="{{type === 'video'}}"  class="picker icon-box ds-ce" bindtap="_openPick">
         <image src="../../static/image/shiping.png"  class="img-box" />
       </view>
-    </picker>
   </view>
   <view class="gz-body" style="height: {{box.height - 50}}px">
     <view wx:if="{{type === 'news'}}" class="gz-sc-box">

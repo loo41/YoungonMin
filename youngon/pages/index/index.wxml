@@ -31,7 +31,7 @@
       </block>
       </swiper>
     </view>
-    <view class="container" wx:if="{{swiperObject.imgUrls.length === 0}}">
+    <view class="container" wx:if="{{swiperObject.imgUrls.length === 0 || !swiperObject.imgUrls}}">
       <image src="http://wy.tianchenyong.top/backgroundIndex-youngon.jpg" id="{{idx}}" class="slide-image" />
     </view>
       
@@ -61,11 +61,13 @@
           </view>
           <text>网站推文</text>
         </view>
-        <view bindtap="_chat">
+        <view bindtap="_leavingMessage">
           <view class="header-Img">
-            <text class="header-Img-box hIB5"></text>
+            <div class="header-Img-box ds-ce">
+              <image src="../../static/image/leave.png" style="height: 70%; width: 70%"/>
+            </div>
           </view>
-          <text>在线畅聊</text>
+          <text>我想留言</text>
         </view>
       </view>
       <view>
@@ -77,7 +79,9 @@
         </view>
         <view bindtap="_aboutUs">
           <view class="header-Img">
-            <text class="header-Img-box hIB4"></text>
+            <div class="header-Img-box ds-ce">
+              <image src="../../static/image/about.png" style="height: 60%; width: 70%"/>
+            </div>
           </view>
           <text>关于我们</text>
         </view>
@@ -102,7 +106,7 @@
             </view>
           </view>
         </view>
-        <view wx:if="{{trends.isBottom}}" class="youngonTrends-bottom">已经到底了...</view>
+        <view wx:if="{{trends.isBottom}}" class="youngonTrends-bottom">我是有底线的...</view>
     </view>
 
     <!-- 测导航栏目 -->
@@ -134,12 +138,13 @@
           class="share share-3">
         </button>
       </view>
+      <!--
       <view class="flex-center">
         <button open-type='openSetting'
           hover-class="gb-change"
           class="share share-4">
         </button>
-      </view>
+      </view>-->
     </view>
   </view>
   <msg class="msg" wx:if="{{close}}"></msg>

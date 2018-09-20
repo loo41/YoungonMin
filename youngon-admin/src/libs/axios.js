@@ -65,7 +65,7 @@ class httpRequest {
   // 创建实例
   create () {
     let conf = {
-      baseURL: `http://127.0.0.1:3011/Wadmin`,
+      baseURL: `http://wy-admin.tianchenyong.top/Wadmin`,
       // timeout: 2000,
       headers: {
         'Content-Type': 'application/json; charset=utf-8',

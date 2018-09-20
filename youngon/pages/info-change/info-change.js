@@ -24,10 +24,9 @@ Page({
     animationData: {},
     isError: false,
     gradeItems: [{name: '大一', value: 1}, {name: '大二', value: 2},{name: '大三', value: 3}, {name: '大四', value: 4}],
-    postItems: [{name: '站长', value: 1}, {name: '部长', value: 2}, {name: '正式', value: 3}, {name: '实习', value: 4}, {name: '副站', value: 5}],
+    postItems: [{name: '站长', value: 1}, {name: '副站', value: 2}, {name: '部长', value: 3}, {name: '正式', value: 4}, {name: '实习', value: 5}],
     stateItems: [{name: '在站', value: 1},{name: '不在站', value: 2}],
     deItems: [{name: '开发', value: 1},{name: '企划', value: 2}, {name: '运营', value: 3}, {name: '信息', value: 4}],
-
   },
   onLoad () {
     const token = wx.getStorageSync("token")

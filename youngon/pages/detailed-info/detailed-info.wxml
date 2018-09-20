@@ -27,17 +27,17 @@
     <view class="user-info_smallBox ds-le">
       <view class="icon ds-ce"><text class="iconfont icon-zhiwei body_view_icon"/></view>
       <view class="user-info_title" wx-if="{{user.post===1}}">站长</view>
-      <view class="user-info_title" wx:elif="{{user.post===2}}">部长</view>
-      <view class="user-info_title" wx:elif="{{user.post===3}}">正式站员</view>
-      <view class="user-info_title" wx:elif="{{user.post===4}}">实习站员</view>
-      <view class="user-info_title" wx:elif="{{user.post===5}}">副站</view>
+      <view class="user-info_title" wx:elif="{{user.post===2}}">副站</view>
+      <view class="user-info_title" wx:elif="{{user.post===3}}">部长</view>
+      <view class="user-info_title" wx:elif="{{user.post===4}}">正式站员</view>
+      <view class="user-info_title" wx:elif="{{user.post===5}}">实习站员</view>
     </view>
     <view class="user-info_smallBox ds-le">
       <view class="icon ds-ce"><text class="iconfont icon-bumen body_view_icon"/></view>
       <view class="user-info_title" wx-if="{{user.department===1}}">开发部</view>
       <view class="user-info_title" wx:elif="{{user.department===2}}">企划部</view>
       <view class="user-info_title" wx:elif="{{user.department===3}}">运营部</view>
-      <view class="user-info_title" wx:elif="{{user.department===3}}">信息部</view>
+      <view class="user-info_title" wx:elif="{{user.department===4}}">信息部</view>
     </view>
     <view class="user-info_smallBox ds-le">
       <view class="icon ds-ce"><text class="iconfont icon-zhuangtai body_view_icon"/></view>

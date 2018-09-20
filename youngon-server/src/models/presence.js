@@ -2,8 +2,7 @@ const moogose = require('mongoose');
 const Schema = moogose.Schema;
 
 const PresenceSchema = new Schema({
-  id: {type: String, index: true},                                    // 对应到成员
-  startTime: {type: String, default: Date.now()},
+  startTime: Number,
   type: Number,
   user: {type: Schema.Types.ObjectId, ref: 'youngonUser'},            // youngonUser
 })

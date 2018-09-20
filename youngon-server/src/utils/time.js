@@ -1,3 +1,7 @@
+const dayJs = require('dayjs')
+let timeSlot = [[[8, 0], [9, 35]], [[10, 5], [11, 45]], [[13, 30], [15, 35]], [[16, 5], [17, 5]]]
+
+
 exports.timer = (time) => {
   if (typeof time !== 'number') Number(time)
   let nowTimer = Date.now()
@@ -21,4 +25,21 @@ exports.timer = (time) => {
   } else {
     return '很久了'
   }
+}
+
+
+exports.delTime = (startTime, endTime) => {
+  let dateObject = dayJs(Number(startTime))
+  let trueFlagArray = []
+  timeSlot.forEach((item, i) => {
+    if(dayJs(new Date(Number(dateObject.year()), Number(dateObject.month()), Number(dateObject.date()), item[0][0], item[0][1])).isAfter(dateObject)
+      && dayJs(new Date(Number(dateObject.year()), Number(dateObject.month()), Number(dateObject.date()), item[1][0], item[1][1])).isBefore(dayJs(Number(endTime)))){
+        trueFlagArray.push(i)
+    }
+  })
+  return trueFlagArray
+}
+
+exports.getTime = (date) => {
+  return `${date.year()}年${(date.month() + 1)}月${date.date()}日${date.day()}周${date.hour()}时${date.minute()}分`
 }

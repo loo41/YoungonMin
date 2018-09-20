@@ -24,12 +24,12 @@
   flex-direction: column;
 }
 .user-input {
-  background: #EFEFF4;
+  background: white;
 }
 .input-box {
   min-height: 100rpx;
-  border-bottom: 1px solid #3aafec;
-  background: #EFEFF4;
+  border-bottom: 1px solid #EAEAEA;
+  background: white;
   display: flex;
 }
 .clounm-name {

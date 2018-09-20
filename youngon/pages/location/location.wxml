@@ -1,9 +1,10 @@
 <view style="height: 100%; width: 100%">
   <map 
-      longitude="117.13438" 
-      latitude="39.188678" 
+      longitude="117.127865" 
+      latitude="39.1822288" 
       markers="{{markers}}" 
-      class="map-box" 
-      scale="16">
+      class="map-box"
+      enable-overlooking="true" 
+      scale="18">
   </map>
 </view>

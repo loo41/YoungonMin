@@ -59,23 +59,23 @@ export default {
         {title: '邮箱', key: 'email'},
         {title: '等级', key: 'grade'},
         {title: '操作', key: 'action', width: 300, align: 'center',
-        render: (h, params) => {
-          return h('div', [
-            h('Button', {
-              props: {type: 'primary', size: 'small'},
-              style: {marginRight: '5px'},
-              on: {click: () => {this._showChange(params)}}
-             }, '更改'),
-            h('Button', {
-              props: {type: 'error', size: 'small'},
-              style: {marginRight: '5px'},
-              on: {click: () => {this._showDelect(params, params.index)}}
-            }, '删除')])
-        }
+          render: (h, params) => {
+            return h('div', [
+              h('Button', {
+                props: {type: 'primary', size: 'small'},
+                style: {marginRight: '5px'},
+                on: {click: () => { this._showChange(params) }}
+              }, '更改'),
+              h('Button', {
+                props: {type: 'error', size: 'small'},
+                style: {marginRight: '5px'},
+                on: {click: () => { this._showDelect(params, params.index) }}
+              }, '删除')])
+          }
         }
       ],
       adminListData: [
-        { _id: 'sfsefes', id: 'sfe', userName: 'John Brown', sex: '男',  email: '1805170243@qq.com', grade: 8}
+        {_id: 'sfsefes', id: 'sfe', userName: 'John Brown', sex: '男', email: '1805170243@qq.com', grade: 8}
       ]
     }
   },
@@ -90,7 +90,7 @@ export default {
         result = result.data
         this.$Spin.hide()
         this.adminListData = result
-      }).catch(() => {this.$Spin.hide()})
+      }).catch(() => { this.$Spin.hide() })
     },
     _delectUser () {
       const _id = this.params._id
@@ -115,7 +115,7 @@ export default {
     },
     async _changeUser () {
       if (await validaAdminInfo(this, this.params, this.userInfo)) return
-      if(!validation(this, this.userInfo)) return
+      if (!validation(this, this.userInfo)) return
       changeUser(this.userInfo)
     }
   }

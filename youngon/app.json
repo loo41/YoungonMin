@@ -3,9 +3,10 @@
     "pages/index/index",
     "pages/detailed-info/detailed-info",
     "pages/sign/sign",
+    "pages/record/record",
     "pages/trends/trends",
     "pages/notice/notice",
-    "pages/chat/chat",
+    "pages/leavingMessage/leavingMessage",
     "pages/about-us/about-us",
     "pages/webView/webView",
     "pages/person/person",
@@ -25,7 +26,7 @@
     "list": [{
       "pagePath": "pages/index/index",
       "text": "Youngon",
-      "iconPath": "./static/image/home2.png",
+      "iconPath": "./static/image/home1.png",
       "selectedIconPath": "./static/image/home.png"
     }, {
       "pagePath": "pages/person/person",

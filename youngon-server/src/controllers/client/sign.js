@@ -13,15 +13,16 @@ exports.info = async (ctx) => {
   let jokeLength = await Joke.count()
   const user = await _token.istoken(ctx)
   const {youngonId} = user
-  const [joke , presence, Honor, forgetSign, carrierKey] = await Promise.all([
+  let [joke , presence, Honor, forgetSign, carrierKey] = await Promise.all([
     Joke.find({}).skip(Math.floor(Math.random() * jokeLength)).limit(1),
     Presence.find({}).populate({path: 'user', select: 'headerImg username'}),
-    Youngonuser.find({}).sort({SignCount: 1}).limit(5),
-    Youngonuser.find({}).sort({forgetSignCount: 1}).limit(5),
+    Youngonuser.find({}).sort({SignCount: -1}).limit(5),
+    Youngonuser.find({}).sort({forgetSignCount: -1}).limit(5),
     Youngonuser.find({carrierKey: true})
   ])
+  joke = JSON.parse(JSON.stringify(joke))
   if (jokeLength !== 0) joke[0].timer = await _time.timer(joke[0].timer)
-  const presences = await Presence.find({id: youngonId})
+  const presences = await Presence.find({user: youngonId})
   let signState = false
   if (presences.length !== 0) signState = true
   ctx.body = {code: 200, data: {joke, presence, Honor, forgetSign, carrierKey, signState}}
@@ -40,7 +41,8 @@ exports.sign = async (ctx) => {
   }
   const user = await _token.istoken(ctx)
   const {youngonId} = user
-  const presence = new Presence({id: youngonId, user: youngonId, type})
+  let startTime = Date.now()
+  const presence = new Presence({user: youngonId, type, startTime})
   await presence.save()
   ctx.body = {code: 200}
 }
@@ -49,27 +51,28 @@ exports.signOut = async (ctx) => {
   const {signOutType} = ctx.request.body
   const user = await _token.istoken(ctx)
   const {youngonId} = user
-  const presence = await Presence.findOneAndRemove({id: youngonId})
+  const presence = await Presence.findOne({user: youngonId})
   const {startTime} = presence
   const endTime = Date.now()
   const record = new Record({
-    startTime, endTime, user: youngonId
+    startTime, endTime, user: youngonId, signType: presence.type
   })
   if (Number(signOutType) === 1) {
     await Youngonuser.update({_id: youngonId}, {carrierKey: true, $inc: {SignCount: 1}})
   } else {
     await Youngonuser.update({_id: youngonId}, {carrierKey: false, $inc: {SignCount: 1}})
   }
+  await Presence.remove({user: youngonId})
   await record.save()
   ctx.body = {code: 200}
 }
 
 exports.apply = async (ctx) => {
-  const {startTime, startClass, endTime, endClass, value} = ctx.request.body.application
+  const {startTime, startClass, endTime, endClass, secondEndTime, secondEndClass, value} = ctx.request.body.application
   const user = await _token.istoken(ctx)
   const {youngonId, username} = user
   const apply =  new Apply({
-    startTime, startClass, endTime, endClass, value, id: youngonId
+    startTime, startClass, endTime, endClass, value, secondEndTime, secondEndClass, user: youngonId
   })
   await apply.save()
   ctx.body = {code: 200}
@@ -96,8 +99,9 @@ exports.addJoke = async(ctx) => {
   const {shareValue} = ctx.request.body
   const user = await _token.istoken(ctx)
   const {youngonId ,username} = user
+  let timer = Date.now()
   const joke = new Joke({
-    id: youngonId, username, content: shareValue
+    id: youngonId, username, content: shareValue, timer
   })
   await joke.save()
   ctx.body = {code: 200}

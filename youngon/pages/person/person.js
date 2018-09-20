@@ -3,7 +3,8 @@ import {_dealwithZorn} from '../../utils/util'
 
 Page({
   data: {
-    userinfo: app.globalData.userinfo
+    userinfo: app.globalData.userinfo,
+    notRun: false
   },
   onLoad: function() {
     this._chckLogin()
@@ -37,6 +38,8 @@ Page({
     }
   },
   _getUserInfo: function() {
+    if (this.data.notRun) return
+    this.setData({notRun: true})
     wx.getUserInfo({
       success: res => {
         wx.showLoading({title: '登陆中'})
@@ -56,9 +59,11 @@ Page({
             break
         }
         setTimeout(() => {wx.hideLoading()}, 500)
+        this.setData({notRun: false})
       },
       fail: () => {
         console.log('未登录')
+        this.setData({notRun: true})
       }
     })
   },
@@ -66,6 +71,12 @@ Page({
     const {id} = e.currentTarget
     if (!id) return
     wx.navigateTo({url: `/pages/${id}/${id}`})
+  },
+  _edition () {
+    wx.showModal({
+      title: '版本',
+      content: '当前版本为1.0.0'
+    })
   },
   _change () {
     wx.getSetting({

@@ -7,7 +7,20 @@ export const getYoungonList = (params) => {
     method: 'get'
   })
 }
-
+export const getYoungonAllList = (params) => {
+  return axios.request({
+    url: 'youngon_list_all',
+    params,
+    method: 'get'
+  })
+}
+export const userRecordList = (params) => {
+  return axios.request({
+    url: 'user-record-list',
+    params,
+    method: 'get'
+  })
+}
 export const isYoungon = (params) => {
   return axios.request({
     url: 'is_youngon',
@@ -51,6 +64,22 @@ export const delectUser = (_id) => {
 export const getUserList = (params) => {
   return axios.request({
     url: 'userlist',
+    params,
+    method: 'get'
+  })
+}
+
+export const getJokeList = (params) => {
+  return axios.request({
+    url: 'joke-list',
+    params,
+    method: 'get'
+  })
+}
+
+export const delJoke = (params) => {
+  return axios.request({
+    url: 'delect-joke',
     params,
     method: 'get'
   })

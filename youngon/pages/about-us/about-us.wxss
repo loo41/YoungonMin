@@ -56,6 +56,7 @@
   box-sizing: border-box;
   padding: 4rpx;
   background: white;
+  overflow-y: scroll;
 }
 .ani-dp2 {
   height: 50%;

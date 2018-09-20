@@ -5,6 +5,7 @@
 <template>
 <div>
   <Table :columns="columns" :data="youngonListData" border ></Table>
+  <div style="margin-top: 50px"><Page :total="count" :page-size="20" @on-change="_loadingMore"/></div>
   <Modal
     v-model="isUpdate"
     title="填写站员基本信息"
@@ -33,6 +34,25 @@
           <Option v-for="item in departmentList" :value="item.value" :key="item.value">{{ item.label }}</Option>
         </Select>
       </div>
+       <div>
+          <div class="duty">TIME</div>
+          <div>
+            <Select v-model="youngonPersonInfo.fistWorkTimeDate" style="width:200px">
+              <Option v-for="item in dateList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+            </Select>
+            <Select v-model="youngonPersonInfo.fistWorkTimeTime" style="width:200px">
+              <Option v-for="item in timeList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+            </Select>
+          </div>
+          <div>
+            <Select v-model="youngonPersonInfo.secondWorkTimeDate" style="width:200px">
+              <Option v-for="item in dateList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+            </Select>
+            <Select v-model="youngonPersonInfo.secondWorkTimeTime" style="width:200px">
+              <Option v-for="item in timeList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+            </Select>
+          </div>
+        </div>
     </div>
   </Modal>
   <Modal
@@ -51,7 +71,7 @@ import {validation} from './utils.js'
 export default {
   data () {
     return {
-      page: 1,
+      count: 0,
       youngonPersonInfo: {},
       isUpdate: false,
       isdelectYoungon: false,
@@ -89,10 +109,12 @@ export default {
         }
       ],
       gradeList: [{value: 1, label: '大一'}, {value: 2, label: '大二'}, {value: 3, label: '大三'}, {value: 3, label: '大四'}],
-      postList: [{value: 1, label: '站长'}, {value: 2, label: '部长'}, {value: 3, label: '正式站员'}, {value: 3, label: '实习站员'}],
+      postList: [{value: 1, label: '站长'}, {value: 2, label: '副站'}, {value: 3, label: '部长'}, {value: 4, label: '正式站员'}, {value: 5, label: '实习站员'}],
       stateList: [{value: 1, label: '在站'}, {value: 2, label: '不在站'}],
       vipList: [{value: 1, label: '无'}, {value: 2, label: '普通vip'}, {value: 3, label: '尊贵vip'}],
-      departmentList: [{value: 1, label: '开发部'}, {value: 1, label: '企划部'}, {value: 1, label: '运营部'}, {value: 1, label: '信息部'},],
+      departmentList: [{value: 1, label: '开发部'}, {value: 2, label: '企划部'}, {value: 3, label: '运营部'}, {value: 4, label: '信息部'}],
+      dateList: [{value: 1, label: '周一'}, {value: 2, label: '周二'}, {value: 3, label: '周三'}, {value: 4, label: '周四'}, {value: 5, label: '周五'}],
+      timeList: [{value: 1, label: '第一大节'}, {value: 2, label: '第二大节'}, {value: 3, label: '第三大节'}, {value: 4, label: '第四大节'}],
       youngonListData: [{
         _id: 'adwdwa',
         id: 'adwdaw',
@@ -104,25 +126,33 @@ export default {
         grade: 2,                                                                    // 1代码大一 2大二  3大三 4大四
         post: 2,                                                                     // 1代表站长 2代表部长 3代表正式站员 4代表实习站员
         state: 1, 
-        vip: 1                                                                      // 设计权限问题
+        vip: 1,                                                                      // 设计权限问题
+        fistWorkTimeDate: '',
+        fistWorkTimeTime: '',
+        secondWorkTimeDate: '',
+        secondWorkTimeTime: ''
       }]
     }
   },
-  created () {this._getYoungonList()},
+  created () {this._getYoungonList(1)},
   methods: {
-    _getYoungonList () {
+    _getYoungonList (page) {
       return new Promise((resolve, reject) => {
         const msg = this.$Message.loading({
             content: 'Loading...',
             duration: 0
         });
         let loding = setTimeout(msg, 2000)
-        getYoungonList({page: this.page}).then((result) => {
+        getYoungonList({page}).then((result) => {
           if (!result) return
-          const {data} = result
+          const {data, count} = result
           this.youngonListData = data
+          this.count = count
         }).catch(() => {})
       })
+    },
+    _loadingMore (page) {
+      this._getYoungonList(page)
     },
     _showupdate (params) {
       this.params = params

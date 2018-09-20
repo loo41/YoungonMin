@@ -19,19 +19,10 @@ Page({
       nextMargin: '0px',                         // 后边距
       displayMultipleItems: 1,                   // 同时显示的滑块数量
       notice: {                                  // 公告
-        status: true,
-        content: "测试公告测试公告测试公告测测试公告测试公告测试公告测试公告测试公告"
+        status: false,
+        content: ""
       },
-      imgUrls: [
-        {
-          url: 'https://avatars2.githubusercontent.com/u/39424446?v=4&s=120',   // 图片地址
-          OuterChain: {url: 'https://eams.youngon.com.cn', type: 1, appId: '', path: '', extraData: []},   // 外联地址 type类型 0 1 2 // 0 是不展示 1是网页跳转 2是跳转的小程序
-        }, 
-        {
-          url: 'https://avatars2.githubusercontent.com/u/39424446?v=4&s=120',
-          OuterChain: {url: 'http://youngon.cn', type: 1, appId: '', path: '', extraData: []}
-        }
-      ]
+      imgUrls: []
     },
     notFrist: false,
     close: false,
@@ -251,15 +242,7 @@ Page({
   _gzAricle: function() {
     wx.navigateTo({url: `/pages/gz-article/gz-article`})
   },
-  _chat: function () {
-    const {state} = app.globalData
-    if (state === 0) {
-      wx.showModal({
-        title: '提示',
-        content: '对不起! 未登录',
-      })
-      return
-    }
-    wx.navigateTo({url: `/pages/chat/chat`})
+  _leavingMessage: function () {
+    wx.navigateTo({url: `/pages/leavingMessage/leavingMessage`})
   }
 })

@@ -19,30 +19,17 @@ Page({
     navbar: ['首页', '签到', '记录'],  
     currentTab: 0,
     signInfo: {
-      presence: [{
-        username: 'Tcy',
-        id: 'adwdawdw',                                    // 对应到成员
-        user: {headerImg: 'https://avatars2.githubusercontent.com/u/39424446?v=4&s=120'},               // userinfo
-      },{
-        username: 'Tcy',
-        id: 'adwdawdw',                                    // 对应到成员
-        user: {headerImg: 'https://avatars2.githubusercontent.com/u/39424446?v=4&s=120'},               // userinfo
-      }],
+      presence: [],
       Honor: [{}],
       forgetSign: [],
       carrierKey: [],
       signState: true,  
-      joke: [{
-        id: '{type: String, index: true}',                    // 发布者
-        username: 'Tcyong',                                   // 发布者姓名
-        content: '扁担宽,板凳长,板凳长板凳长板凳长板凳长板凳长板凳长板凳长板凳长',       // 内容
-        timer: '一天前'                                       // 发布时间
-      }],
+      joke: [],
     },
     type: null,
     signOutType: null,
     checked: false,
-    application: {startTime: '', startClass: '', endTime: '', endClass: '', value: 'adwd'},
+    application: {startTime: '', startClass: '', endTime: '', endClass: '', secondEndTime: '', secondEndClass: '', value: ''},
     lesson: ['第一大节', '第二大节', '第三大节', '第四大节']
   },
   onLoad () {
@@ -113,6 +100,12 @@ Page({
       })
     })
   },
+  _moreRecord (e) {
+    const {id} = e.target
+    wx.navigateTo({
+      url: `/pages/record/record?type=${id}`
+    })
+  },
   navbarTap: function(e){  
     this.setData({  
       currentTab: e.currentTarget.dataset.idx  
@@ -163,6 +156,14 @@ Page({
         application.endClass = Number(e.detail.value)
         this.setData({application})
         break
+      case 'secondEndTime':
+        application.secondEndTime = e.detail.value
+        this.setData({application})
+        break
+      case 'secondEndClass':
+        application.secondEndClass = Number(e.detail.value)
+        this.setData({application})
+        break
     }
   },
   _sign () {
@@ -185,6 +186,7 @@ Page({
         wx.showModal({title: '提示', content: '签到成功'})
         this._getSignInfo()
       }).catch((code) => {
+        wx.showModal({title: '提示', content: '签到失败',})
         that.setData({loading: false, disabled: false})
       })
     }

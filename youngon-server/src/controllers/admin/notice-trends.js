@@ -5,7 +5,8 @@ exports.upTends = async (ctx) => {
   const {title, picture, value, content} = ctx.request.body
   const admin = await _token.istoken(ctx)
   const {userName} = admin
-  const trends = new Trends({title, author: userName, picture})
+  let timer = Date.now()
+  const trends = new Trends({title, author: userName, picture, timer})
   const id = trends._id
   const con = new Content({id, value, content})
   await Promise.all[await trends.save(), await con.save()]
@@ -16,7 +17,8 @@ exports.upNotice = async (ctx) => {
   const {title, picture, value, content} = ctx.request.body
   const admin = await _token.istoken(ctx)
   const {userName } = admin
-  const trends = new Notice({title, author: userName, picture})
+  let timer = Date.now()
+  const trends = new Notice({timer, title, author: userName, picture})
   const id = trends._id
   const con= new Content({id, value, content})
   await Promise.all[await trends.save(), await con.save()]

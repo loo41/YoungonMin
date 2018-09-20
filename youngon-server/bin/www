@@ -1,6 +1,6 @@
 const http = require('http');
 const app = require('../app');
-const {chat} = require('../src/utils/webSocket.js')
+// const {chat} = require('../src/utils/webSocket.js')
 
 const onError = (e) => {
   console.log(e)
@@ -10,7 +10,7 @@ const onError = (e) => {
 }
 
 const server = http.createServer(app.callback());
-chat(server)
+// chat(server)
 server.listen(3011);
 
 console.log('start listening  http://localhost:3011');

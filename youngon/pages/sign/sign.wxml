@@ -27,7 +27,7 @@
       <text style="margin-left: 20rpx;">当前在站</text>
     </view>
     <view class="now-house_person">
-      <view wx:for="{{signInfo.presence}}" wx:for-index="idx" id="{{item.id}}" bindtap="_Nav" wx:key="*this" hover-class="gb-change" class="now-house_person-box">
+      <view wx:for="{{signInfo.presence}}" wx:for-index="idx" id="{{item.user._id}}" bindtap="_Nav" wx:key="*this" hover-class="gb-change" class="now-house_person-box">
         <view class="nPimg ds-ce">
           <view class="img-box ds-ce">
             <image src="{{item.user.headerImg}}" style="height: 100%; width: 100%;" />
@@ -179,6 +179,22 @@
           </view>
         </picker>
       </view>
+      <view class="app_time">
+        <picker mode="date" value="{{application.endTime}}" start="2018-07-02" class="picker-box" end="2019-07-02" id="secondEndTime" bindchange="_bindChange">
+          <view class="picker" style="width: 300px; max-width: 300px">
+            <text>补值班日期:</text>
+            <text>{{application.secondEndTime}}</text>
+          </view>
+        </picker>
+      </view>
+      <view class="app_time">
+        <picker bindchange="_bindChange" id="secondEndClass" value="{{application.endClass}}" range="{{lesson}}">
+          <view class="picker" style="width: 300px; max-width: 300px">
+            <text>补值班课节:</text>
+            <text>{{lesson[application.secondEndClass]}}</text>
+          </view>
+        </picker>
+      </view>
       <view class="sign-app_box ds-ce">
         <button type="default"
           class="sign-application"
@@ -198,7 +214,7 @@
       <text style="margin-left: 20rpx">荣誉榜</text>
     </view>
     <view class="rank-body">
-      <view wx:for="{{signInfo.Honor}}"wx:for-index="idx" wx:key="*this" class="ranking-box" id="{{item._id}}" bindtap="_Nav">
+      <view wx:for="{{signInfo.Honor}}" wx:for-index="idx" wx:key="*this" class="ranking-box" id="{{item._id}}" bindtap="_Nav" wx:if="{{item.SignCount !== 0}}">
         <view class="ranking-body">
           <view class="ranking-body_top">
             <view class="rBT-img">
@@ -226,7 +242,7 @@
       <view>
         <text class="iconfont icon-xingzhuang91zhuanhuan01"/> 再接再厉
       </view>
-      <view>more...</view>
+      <view bindtap="_moreRecord" id="1">more...</view>
     </view>
   </view>
   <view class="sign-rank">
@@ -235,7 +251,7 @@
       <text style="margin-left: 20rpx">忘签榜</text>
     </view>
     <view class="rank-body">
-      <view wx:for="{{signInfo.forgetSign}}"wx:for-index="idx" wx:key="*this" id="{{item._id}}" class="ranking-box" bindtap="_Nav">
+      <view wx:for="{{signInfo.forgetSign}}"wx:for-index="idx" wx:key="*this" id="{{item._id}}" class="ranking-box" bindtap="_Nav" wx:if="{{item.forgetSignCount !== 0}}">
         <view class="ranking-body">
           <view class="ranking-body_top">
             <view class="rBT-img">
@@ -247,7 +263,7 @@
                 <text>{{item.username}}</text>
               </view>
               <view class="rBT-body-bottom">
-                <text>签到:</text>
+                <text>忘签:</text>
                 <text>{{item.forgetSignCount}}次</text>
               </view>
             </view>
@@ -263,7 +279,7 @@
       <view>
         <text class="iconfont icon-good"/> 记得签退哦
       </view>
-      <view>more...</view>
+      <view bindtap="_moreRecord" id="2">more...</view>
     </view>
   </view>  
 </view>

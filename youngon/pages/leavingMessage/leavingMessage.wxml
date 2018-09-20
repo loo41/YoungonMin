@@ -1,0 +1,40 @@
+<view>
+  <view class="leave-box">
+    <view class="add-leave">
+      <view>
+        <text class="iconfont icon-kaixin"/>
+        <text style="margin-left: 20rpx;">留言</text>
+      </view>
+      <view bindtap="_openShare">
+        <text class="iconfont icon-plus"/>
+      </view>
+    </view>
+    <view class="leave-list-box">
+      <view class="leave-title">精选留言</view>
+      <view wx:for="{{list}}" wx:for-index="idx" wx:key="*this" class="leave-con">
+        <view>{{item.content}}</view>
+        <view>
+          <view>留言者:  {{item.user.nickName}}</view>
+          <view>发布于:  {{item.timer}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="share-box ds-ce" wx:if="{{leave}}" bindtap="_closeShare">
+    <view class="share" catchtap="_stop">
+       <textarea 
+        bindinput="_getLeaveValue"
+        value="{{leaveValue}}"
+        placeholder="留言分享, 我们讲精选留言进行展示"
+        placeholder-class="share-happly" 
+        style="width: 100%; height: 60%"/>
+        <view class="share-but ds-ce">
+          <button type="default"
+          class="sign-application"
+          loading="{{loading}}" 
+          disabled="{{disabled}}" 
+          bindtap="_upLeave"> 提交 </button>
+        </view>
+    </view>
+  </view>
+</view>

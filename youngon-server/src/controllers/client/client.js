@@ -68,6 +68,7 @@ exports.youngonPerson = async(ctx) => {
   const skipnum = (currentPage - 1) * pageSize
   const data = await Youngonuser
                               .find({})
+                              .sort({post: 1})
                               .skip(skipnum)
                               .limit(pageSize)
                               .populate('userinfo')
@@ -90,7 +91,8 @@ exports.createIndexData = async(ctx) => {
     const info = await Youngonuser.find({id})
     if (info.length === 0) trueChange = false
   }
-  const swiper = await Swiper.findOne({})
+  let swiper = await Swiper.findOne({})
+  swiper = swiper || {}
   const youngonTrends = await Trends.find({}).limit(3)
   youngonTrends.reverse()
   ctx.body = {code: 200, data: {swiper}, youngonTrends, trueChange}
@@ -101,4 +103,15 @@ exports.search = async(ctx) => {
   const Rex = new RegExp(`${user}`)
   const data = await Youngonuser.find({username: Rex})
   ctx.body = {code: 200, data}
+}
+
+exports.record = async(ctx) => {
+  const {type} = ctx.query
+  let list = []
+  if (Number(type) === 1) {
+    list = await Youngonuser.find({}).sort({SignCount: -1})
+  } else if (Number(type) === 2) {
+    list = await Youngonuser.find({}).sort({forgetSignCount: -1})
+  }
+  ctx.body = {code: 200, list}
 }
